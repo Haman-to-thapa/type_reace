@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: type-race-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node dist/server.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false # Set this in the Render Dashboard
+      - key: CORS_ORIGIN
+        value: "*" # Update this with your frontend URL later for better security
